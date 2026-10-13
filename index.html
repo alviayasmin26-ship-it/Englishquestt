@@ -1,0 +1,104 @@
+<!DOCTYPE html> <!-- Memberitahu browser bahwa file ini adalah HTML5 -->
+<html lang="id"> <!-- Membuka dokumen HTML dan memakai bahasa Indonesia -->
+
+<head> <!-- Bagian pengaturan halaman, tidak tampil di layar -->
+    <meta charset="UTF-8"> <!-- Mengatur huruf agar emoji dan teks Indonesia tampil benar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Membuat tampilan menyesuaikan ukuran HP -->
+    <title>English Quest</title> <!-- Menulis judul di tab browser -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Menyambung lebih cepat ke server font Google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Menyambung lebih cepat ke file font -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet"> <!-- Mengambil font Fredoka -->
+    <link rel="stylesheet" href="style.css"> <!-- Menghubungkan file CSS untuk merapikan tampilan -->
+</head> <!-- Menutup bagian pengaturan halaman -->
+
+<body> <!-- Membuka isi halaman yang terlihat pengguna -->
+    <section id="startPage" class="page active"> <!-- Halaman awal; class active artinya halaman ini yang tampil dulu -->
+        <div class="start-card"> <!-- Kartu putih di tengah layar halaman awal -->
+            <div class="logo-icon">📖 ⭐</div> <!-- Ikon buku dan bintang sebagai logo -->
+            <h1> <!-- Judul besar website -->
+                <span>ENGLISH</span> <!-- Baris pertama judul berwarna biru -->
+                <strong>QUEST</strong> <!-- Baris kedua judul berwarna kuning -->
+            </h1> <!-- Menutup judul besar -->
+            <p class="tagline">Your English Adventure Begins!</p> <!-- Slogan petualangan bahasa Inggris -->
+            <div class="character" aria-hidden="true">🎓</div> <!-- Gambar karakter toga; aria-hidden agar tidak dibaca pembaca layar -->
+            <h2>🎮 LET'S PLAY!</h2> <!-- Ajakan mulai bermain -->
+            <p class="instruction">Masukkan nama kamu untuk memulai petualangan</p> <!-- Petunjuk mengisi nama -->
+            <!-- Kotak ketik nama: teks, ID playerInput, placeholder, maksimal 20 huruf, tanpa saran otomatis -->
+            <input
+                type="text"
+                id="playerInput"
+                placeholder="✏️ Nama petualang"
+                maxlength="20"
+                autocomplete="off"
+            >
+            <button class="game-button" id="startButton" type="button"> <!-- Tombol mulai petualangan -->
+                🚀 START QUEST <!-- Teks di dalam tombol mulai -->
+            </button> <!-- Menutup tombol mulai -->
+            <p id="nameMessage" role="alert"></p> <!-- Tempat pesan error jika nama kosong -->
+        </div> <!-- Menutup kartu halaman awal -->
+    </section> <!-- Menutup halaman awal -->
+
+    <section id="gamePage" class="page"> <!-- Halaman peta permainan; disembunyikan sampai nama diisi -->
+        <header class="topbar"> <!-- Bilah atas berisi nama game dan XP -->
+            <div class="brand">⭐ ENGLISH QUEST</div> <!-- Nama game di kiri atas -->
+            <div class="player"> <!-- Area data pemain di kanan atas -->
+                <span>👤 <span id="playerName">Player</span></span> <!-- Menampilkan nama pemain -->
+                <span class="xp">⭐ <span id="xp">0</span> XP</span> <!-- Menampilkan jumlah XP -->
+            </div> <!-- Menutup area data pemain -->
+        </header> <!-- Menutup bilah atas -->
+
+        <main class="game-container"> <!-- Isi utama halaman peta -->
+            <div class="welcome-card"> <!-- Kartu ucapan selamat datang -->
+                <div class="character" aria-hidden="true">🎓</div> <!-- Ikon karakter di samping sapaan -->
+                <div> <!-- Wadah teks sapaan -->
+                    <h2>WELCOME, <span id="welcomeName">PLAYER</span>!</h2> <!-- Teks selamat datang plus nama pemain -->
+                    <p>Pilih level di peta. Selesaikan satu level untuk membuka level berikutnya.</p> <!-- Penjelasan cara bermain -->
+                </div> <!-- Menutup wadah teks sapaan -->
+            </div> <!-- Menutup kartu selamat datang -->
+
+            <div class="quest-map"> <!-- Kotak peta petualangan -->
+                <h1>🗺️ QUEST MAP</h1> <!-- Judul peta -->
+                <div class="levels" id="levels"></div> <!-- Tempat tombol level yang diisi JavaScript -->
+                <div class="castle" aria-hidden="true">🏰</div> <!-- Dekorasi kastil di pojok peta -->
+            </div> <!-- Menutup peta petualangan -->
+        </main> <!-- Menutup isi utama halaman peta -->
+    </section> <!-- Menutup halaman peta -->
+
+    <section id="quizPage" class="page"> <!-- Halaman kuis; tampil saat level dipilih -->
+        <div class="quiz-card"> <!-- Kartu putih tempat soal dan jawaban -->
+            <div class="quiz-header"> <!-- Baris atas kuis: kembali, judul, skor -->
+                <button class="back-button" id="backFromQuiz" type="button">← MAP</button> <!-- Tombol kembali ke peta -->
+                <strong id="levelTitle">VOCABULARY</strong> <!-- Nama level yang sedang dimainkan -->
+                <span>⭐ <span id="quizScore">0</span></span> <!-- Skor kuis saat ini -->
+            </div> <!-- Menutup baris atas kuis -->
+            <p class="quiz-meta">Soal <span id="questionNumber">1</span> / <span id="questionTotal">5</span></p> <!-- Nomor soal sekarang dari total soal -->
+            <div class="progress"> <!-- Wadah batang progres -->
+                <div id="progressBar" class="progress-bar"></div> <!-- Batang biru yang bertambah tiap soal -->
+            </div> <!-- Menutup wadah progres -->
+            <div id="questionEmoji" class="question-emoji">🍎</div> <!-- Emoji yang mewakili soal -->
+            <h2 id="questionText">Which one is a fruit?</h2> <!-- Teks pertanyaan -->
+            <div id="answers" class="answers"></div> <!-- Tempat tombol pilihan jawaban -->
+        </div> <!-- Menutup kartu kuis -->
+    </section> <!-- Menutup halaman kuis -->
+
+    <section id="resultPage" class="page"> <!-- Halaman hasil setelah semua soal selesai -->
+        <div class="result-card"> <!-- Kartu hasil level -->
+            <div class="trophy">🏆</div> <!-- Ikon piala kemenangan -->
+            <h1 id="resultTitle">LEVEL COMPLETE!</h1> <!-- Judul hasil, bisa berubah jadi PERFECT QUEST -->
+            <div class="stars" id="resultStars">⭐⭐⭐</div> <!-- Jumlah bintang sesuai skor -->
+            <div class="final-score"> <!-- Kotak skor akhir -->
+                SCORE <!-- Label skor -->
+                <strong id="finalScore">0</strong> <!-- Angka skor level -->
+                XP <!-- Label XP -->
+            </div> <!-- Menutup kotak skor akhir -->
+            <p id="resultMessage">🎉 Amazing! Keep exploring English!</p> <!-- Pesan motivasi sesuai hasil -->
+            <button class="game-button" id="backFromResult" type="button"> <!-- Tombol kembali ke peta dari hasil -->
+                🗺️ BACK TO MAP <!-- Teks tombol kembali -->
+            </button> <!-- Menutup tombol kembali -->
+        </div> <!-- Menutup kartu hasil -->
+    </section> <!-- Menutup halaman hasil -->
+
+    <script src="script.js"></script> <!-- Menghubungkan file JavaScript agar game bisa berjalan -->
+</body> <!-- Menutup isi halaman -->
+
+</html> <!-- Menutup dokumen HTML -->

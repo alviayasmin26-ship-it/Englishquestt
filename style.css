@@ -1,0 +1,478 @@
+* { /* Memilih semua elemen di halaman */
+    box-sizing: border-box; /* Padding dan border dihitung ke dalam lebar elemen */
+    margin: 0; /* Menghapus jarak luar bawaan browser */
+    padding: 0; /* Menghapus jarak dalam bawaan browser */
+} /* Menutup aturan untuk semua elemen */
+
+body { /* Mengatur tampilan seluruh halaman */
+    font-family: "Fredoka", Arial, sans-serif; /* Memakai font Fredoka, cadangan Arial */
+    min-height: 100vh; /* Tinggi halaman minimal sebesar layar */
+    background: linear-gradient(#18c1ed 0%, #65dcff 48%, #70d36c 48%, #43b85b 100%); /* Latar langit biru lalu rumput hijau */
+    color: #174579; /* Warna teks utama biru tua */
+} /* Menutup aturan body */
+
+button, /* Memilih semua tombol */
+input { /* dan semua kotak input */
+    font-family: inherit; /* Font tombol dan input mengikuti font body */
+} /* Menutup aturan tombol dan input */
+
+.page { /* Setiap halaman game */
+    display: none; /* Disembunyikan dulu */
+    min-height: 100vh; /* Tinggi halaman penuh layar */
+} /* Menutup aturan halaman */
+
+.page.active { /* Halaman yang sedang aktif */
+    display: flex; /* Ditampilkan dengan tata letak flex */
+} /* Menutup aturan halaman aktif */
+
+#startPage { /* Halaman awal khusus */
+    justify-content: center; /* Kartu ditaruh di tengah mendatar */
+    align-items: center; /* Kartu ditaruh di tengah tegak */
+    padding: 20px; /* Jarak tepi layar */
+} /* Menutup aturan halaman awal */
+
+.start-card { /* Kartu putih halaman awal */
+    width: 100%; /* Lebar mengikuti wadah */
+    max-width: 480px; /* Lebar maksimal 480 piksel */
+    background: white; /* Latar putih */
+    border: 7px solid #d9ebfa; /* Bingkai biru muda tebal */
+    border-radius: 35px; /* Sudut sangat membulat */
+    padding: 35px; /* Ruang di dalam kartu */
+    text-align: center; /* Teks rata tengah */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); /* Bayangan di bawah kartu */
+} /* Menutup aturan kartu awal */
+
+.logo-icon { /* Ikon logo di atas judul */
+    font-size: 45px; /* Ukuran ikon diperbesar */
+} /* Menutup aturan logo */
+
+.start-card h1 { /* Judul ENGLISH QUEST */
+    font-size: 52px; /* Huruf sangat besar */
+    line-height: 0.9; /* Jarak antar baris dibuat rapat */
+    margin: 15px 0; /* Jarak atas dan bawah judul */
+    text-shadow: 0 4px #164f9d; /* Bayangan teks biru tua */
+} /* Menutup aturan judul awal */
+
+.start-card h1 span { /* Kata ENGLISH */
+    display: block; /* Dibuat baris sendiri */
+    color: #168cff; /* Warna biru */
+} /* Menutup aturan kata ENGLISH */
+
+.start-card h1 strong { /* Kata QUEST */
+    display: block; /* Dibuat baris sendiri */
+    color: #ffb719; /* Warna kuning */
+} /* Menutup aturan kata QUEST */
+
+.tagline { /* Slogan di bawah judul */
+    background: #168cff; /* Latar biru */
+    color: white; /* Huruf putih */
+    padding: 8px 15px; /* Ruang dalam slogan */
+    border-radius: 20px; /* Sudut membulat seperti pil */
+    font-weight: 600; /* Huruf agak tebal */
+} /* Menutup aturan slogan */
+
+.start-card .character { /* Karakter di halaman awal */
+    font-size: 80px; /* Ikon dibuat besar */
+    margin: 20px 0; /* Jarak atas dan bawah */
+} /* Menutup aturan karakter awal */
+
+.start-card h2 { /* Teks LET'S PLAY */
+    color: #145bb8; /* Warna biru */
+    margin: 10px 0; /* Jarak atas dan bawah */
+} /* Menutup aturan h2 awal */
+
+.instruction { /* Teks petunjuk isi nama */
+    color: #71869d; /* Warna abu kebiruan */
+    margin-bottom: 15px; /* Jarak ke kotak nama */
+} /* Menutup aturan petunjuk */
+
+.start-card input { /* Kotak ketik nama */
+    width: 100%; /* Lebar penuh kartu */
+    padding: 16px; /* Ruang dalam kotak */
+    border: 3px solid #d8eafa; /* Bingkai biru muda */
+    border-radius: 15px; /* Sudut membulat */
+    font-size: 17px; /* Ukuran huruf */
+    text-align: center; /* Teks di tengah */
+    outline: none; /* Menghapus garis fokus bawaan */
+} /* Menutup aturan input nama */
+
+.start-card input:focus { /* Saat kotak nama diklik */
+    border-color: #168cff; /* Bingkai jadi biru lebih tegas */
+} /* Menutup aturan fokus input */
+
+#nameMessage { /* Pesan error nama kosong */
+    margin-top: 12px; /* Jarak dari tombol */
+    color: #e6404f; /* Warna merah */
+    font-weight: 600; /* Huruf tebal */
+    min-height: 20px; /* Tinggi tetap agar layout tidak loncat */
+} /* Menutup aturan pesan nama */
+
+.game-button { /* Tombol oranye utama */
+    width: 100%; /* Lebar penuh */
+    padding: 16px; /* Ruang dalam tombol */
+    margin-top: 15px; /* Jarak dari elemen di atasnya */
+    border: 3px solid white; /* Bingkai putih */
+    border-radius: 20px; /* Sudut membulat */
+    background: linear-gradient(#ffd83d, #ff8500); /* Gradasi kuning ke oranye */
+    color: white; /* Huruf putih */
+    font-size: 18px; /* Ukuran huruf */
+    font-weight: 700; /* Huruf tebal */
+    cursor: pointer; /* Kursor jadi tangan */
+    box-shadow: 0 6px #bd6100; /* Bayangan oranye tua seperti tombol 3D */
+    transition: 0.2s; /* Animasi halus 0,2 detik */
+} /* Menutup aturan tombol game */
+
+.game-button:hover { /* Saat kursor di atas tombol */
+    transform: translateY(-2px); /* Tombol naik sedikit */
+} /* Menutup aturan hover tombol */
+
+.game-button:active { /* Saat tombol ditekan */
+    transform: translateY(3px); /* Tombol turun seperti ditekan */
+    box-shadow: 0 3px #bd6100; /* Bayangan dipendekkan */
+} /* Menutup aturan tombol ditekan */
+
+.topbar { /* Bilah atas halaman peta */
+    width: 100%; /* Lebar penuh layar */
+    min-height: 70px; /* Tinggi minimal */
+    display: flex; /* Isi disusun mendatar */
+    justify-content: space-between; /* Nama game kiri, pemain kanan */
+    align-items: center; /* Rata tengah tegak */
+    gap: 12px; /* Jarak antar item */
+    padding: 12px 5%; /* Ruang dalam kiri-kanan */
+    background: linear-gradient(90deg, #08bcd6, #197cf2, #7036e7); /* Gradasi biru ke ungu */
+    color: white; /* Huruf putih */
+} /* Menutup aturan topbar */
+
+.brand { /* Teks ENGLISH QUEST di topbar */
+    font-size: 24px; /* Ukuran sedang-besar */
+    font-weight: 700; /* Huruf tebal */
+} /* Menutup aturan brand */
+
+.player { /* Area nama dan XP */
+    display: flex; /* Disusun mendatar */
+    align-items: center; /* Rata tengah tegak */
+    gap: 10px; /* Jarak nama dan XP */
+    flex-wrap: wrap; /* Boleh pindah baris di layar kecil */
+    justify-content: flex-end; /* Rata kanan */
+} /* Menutup aturan player */
+
+.xp { /* Lencana XP kuning */
+    background: #fff1a5; /* Latar kuning muda */
+    color: #9a6100; /* Huruf coklat */
+    padding: 8px 14px; /* Ruang dalam lencana */
+    border-radius: 15px; /* Sudut membulat */
+    font-weight: 700; /* Huruf tebal */
+} /* Menutup aturan XP */
+
+#gamePage.active { /* Halaman peta saat aktif */
+    display: block; /* Tampil sebagai blok, bukan flex, agar isi mengalir ke bawah */
+} /* Menutup aturan game page aktif */
+
+.game-container { /* Wadah isi peta */
+    width: 92%; /* Hampir selebar layar */
+    max-width: 1100px; /* Tidak lebih dari 1100 piksel */
+    margin: 30px auto; /* Jarak atas dan posisi tengah */
+} /* Menutup aturan game container */
+
+.welcome-card { /* Kartu selamat datang */
+    display: flex; /* Karakter dan teks berdampingan */
+    align-items: center; /* Rata tengah tegak */
+    gap: 20px; /* Jarak karakter dan teks */
+    background: white; /* Latar putih */
+    padding: 20px 30px; /* Ruang dalam kartu */
+    border-radius: 28px; /* Sudut membulat */
+    border: 5px solid #dcecff; /* Bingkai biru muda */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Bayangan lembut */
+} /* Menutup aturan welcome card */
+
+.character { /* Ikon karakter umum */
+    font-size: 80px; /* Ukuran besar */
+} /* Menutup aturan character */
+
+.welcome-card h2 { /* Judul WELCOME */
+    color: #155dbb; /* Warna biru */
+} /* Menutup aturan h2 welcome */
+
+.welcome-card h2 span { /* Nama pemain di judul */
+    color: #ff9800; /* Warna oranye */
+} /* Menutup aturan nama di welcome */
+
+.welcome-card p { /* Penjelasan di bawah sapaan */
+    margin-top: 6px; /* Jarak kecil dari judul */
+    color: #5b7390; /* Warna abu kebiruan */
+} /* Menutup aturan paragraf welcome */
+
+.quest-map { /* Kotak peta */
+    position: relative; /* Supaya kastil bisa diposisikan di dalamnya */
+    min-height: 520px; /* Tinggi minimal peta */
+    margin-top: 25px; /* Jarak dari kartu welcome */
+    padding: 30px; /* Ruang dalam peta */
+    border-radius: 35px; /* Sudut membulat */
+    border: 6px solid white; /* Bingkai putih */
+    background: linear-gradient(#54ceff 0%, #a2ebff 55%, #65c96a 55%, #65c96a 100%); /* Langit dan rumput */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Bayangan peta */
+    overflow: hidden; /* Potong isi yang keluar dari sudut */
+} /* Menutup aturan quest map */
+
+.quest-map h1 { /* Judul QUEST MAP */
+    width: max-content; /* Lebar mengikuti teks */
+    max-width: 100%; /* Tidak melewati peta */
+    margin: auto; /* Posisi tengah */
+    padding: 12px 30px; /* Ruang dalam judul */
+    background: white; /* Latar putih */
+    color: #155dbb; /* Huruf biru */
+    border-radius: 20px; /* Sudut membulat */
+    position: relative; /* Di atas dekorasi */
+    z-index: 2; /* Lapisan di atas latar peta */
+} /* Menutup aturan judul peta */
+
+.levels { /* Grid tombol level */
+    display: grid; /* Tata letak kotak-kotak */
+    grid-template-columns: repeat(4, 1fr); /* Empat kolom sama lebar */
+    gap: 20px; /* Jarak antar kartu level */
+    margin-top: 70px; /* Jarak dari judul peta */
+    position: relative; /* Di atas kastil */
+    z-index: 3; /* Lapisan paling depan */
+} /* Menutup aturan levels */
+
+.level-card { /* Kartu satu level */
+    padding: 20px 10px; /* Ruang dalam kartu */
+    background: white; /* Latar putih */
+    border: 5px solid #cce5fa; /* Bingkai biru muda */
+    border-radius: 25px; /* Sudut membulat */
+    cursor: pointer; /* Kursor tangan */
+    color: #155dbb; /* Huruf biru */
+    box-shadow: 0 8px #aac9e5; /* Bayangan biru */
+    transition: 0.2s; /* Animasi halus */
+} /* Menutup aturan level card */
+
+.level-card:hover:not(:disabled) { /* Hover hanya jika level tidak terkunci */
+    transform: translateY(-7px); /* Kartu naik */
+} /* Menutup aturan hover level */
+
+.level-card:disabled { /* Level yang terkunci */
+    cursor: not-allowed; /* Kursor dilarang */
+    opacity: 0.72; /* Sedikit transparan */
+    filter: grayscale(0.2); /* Warna sedikit pudar */
+} /* Menutup aturan level terkunci */
+
+.level-card.done { /* Level yang sudah selesai */
+    border-color: #7ad9a5; /* Bingkai hijau */
+    box-shadow: 0 8px #8ecfa8; /* Bayangan hijau */
+} /* Menutup aturan level selesai */
+
+.level-card span { /* Ikon di kartu level */
+    display: block; /* Satu baris sendiri */
+    font-size: 55px; /* Ikon besar */
+} /* Menutup aturan ikon level */
+
+.level-card b { /* Tulisan LEVEL 1 dst */
+    display: block; /* Satu baris sendiri */
+    margin-top: 8px; /* Jarak dari ikon */
+} /* Menutup aturan judul level */
+
+.level-card small { /* Nama topik level */
+    display: block; /* Satu baris sendiri */
+    margin-top: 7px; /* Jarak dari judul level */
+    color: #67809a; /* Warna abu */
+} /* Menutup aturan nama topik */
+
+.level-status { /* Status Siap / Terkunci / Selesai */
+    display: block; /* Satu baris sendiri */
+    margin-top: 10px; /* Jarak dari nama topik */
+    font-size: 12px; /* Huruf kecil */
+    font-weight: 700; /* Huruf tebal */
+    color: #2a8a58; /* Warna hijau */
+} /* Menutup aturan status level */
+
+.level-card:disabled .level-status { /* Status pada level terkunci */
+    color: #8a97a8; /* Warna abu */
+} /* Menutup aturan status terkunci */
+
+.castle { /* Dekorasi kastil */
+    position: absolute; /* Posisi bebas di dalam peta */
+    right: 8%; /* Jarak dari kanan */
+    bottom: 20px; /* Jarak dari bawah */
+    font-size: 160px; /* Kastil sangat besar */
+    pointer-events: none; /* Tidak bisa diklik */
+} /* Menutup aturan kastil */
+
+#quizPage, /* Halaman kuis */
+#resultPage { /* dan halaman hasil */
+    justify-content: center; /* Kartu di tengah mendatar */
+    align-items: center; /* Kartu di tengah tegak */
+    padding: 20px; /* Jarak tepi */
+} /* Menutup aturan kuis dan hasil */
+
+.quiz-card, /* Kartu kuis */
+.result-card { /* dan kartu hasil */
+    width: 100%; /* Lebar mengikuti layar */
+    background: white; /* Latar putih */
+    border: 7px solid #d9eafa; /* Bingkai biru muda */
+    border-radius: 35px; /* Sudut membulat */
+    padding: 30px; /* Ruang dalam */
+    text-align: center; /* Teks rata tengah */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Bayangan */
+} /* Menutup aturan kartu kuis/hasil */
+
+.quiz-card { /* Khusus kartu kuis */
+    max-width: 850px; /* Lebar maksimal lebih besar */
+} /* Menutup aturan lebar kuis */
+
+.result-card { /* Khusus kartu hasil */
+    max-width: 650px; /* Lebar maksimal sedang */
+    padding: 45px; /* Ruang dalam lebih besar */
+} /* Menutup aturan kartu hasil */
+
+.quiz-header { /* Baris atas kuis */
+    display: flex; /* Tiga item mendatar */
+    justify-content: space-between; /* Kiri, tengah, kanan */
+    align-items: center; /* Rata tengah tegak */
+    gap: 10px; /* Jarak antar item */
+} /* Menutup aturan quiz header */
+
+.quiz-meta { /* Teks nomor soal */
+    margin-top: 12px; /* Jarak dari header */
+    color: #71869d; /* Warna abu */
+    font-weight: 600; /* Huruf agak tebal */
+} /* Menutup aturan quiz meta */
+
+.back-button { /* Tombol kembali ke peta */
+    border: none; /* Tanpa bingkai */
+    background: #e8f4ff; /* Latar biru sangat muda */
+    color: #155dbb; /* Huruf biru */
+    padding: 10px 15px; /* Ruang dalam */
+    border-radius: 12px; /* Sudut membulat */
+    font-weight: 700; /* Huruf tebal */
+    cursor: pointer; /* Kursor tangan */
+} /* Menutup aturan back button */
+
+.progress { /* Wadah batang progres */
+    width: 100%; /* Lebar penuh */
+    height: 15px; /* Tinggi batang */
+    margin: 20px 0; /* Jarak atas bawah */
+    background: #dceafa; /* Latar biru muda */
+    border-radius: 20px; /* Ujung membulat */
+    overflow: hidden; /* Potong isi yang keluar */
+} /* Menutup aturan progress */
+
+.progress-bar { /* Batang biru isi progres */
+    width: 0%; /* Awalnya kosong */
+    height: 100%; /* Tinggi penuh wadah */
+    background: #168cff; /* Warna biru */
+    transition: width 0.3s; /* Lebar berubah halus */
+} /* Menutup aturan progress bar */
+
+.question-emoji { /* Emoji soal */
+    font-size: 90px; /* Ukuran sangat besar */
+} /* Menutup aturan emoji soal */
+
+.quiz-card h2 { /* Teks pertanyaan */
+    font-size: 28px; /* Huruf besar */
+    margin: 15px 0 25px; /* Jarak atas dan bawah */
+} /* Menutup aturan teks soal */
+
+.answers { /* Grid pilihan jawaban */
+    display: grid; /* Tata letak kotak */
+    grid-template-columns: 1fr 1fr; /* Dua kolom */
+    gap: 15px; /* Jarak antar jawaban */
+} /* Menutup aturan answers */
+
+.answer { /* Satu tombol jawaban */
+    padding: 18px; /* Ruang dalam */
+    background: white; /* Latar putih */
+    border: 4px solid #d3e6f8; /* Bingkai biru muda */
+    border-radius: 18px; /* Sudut membulat */
+    color: #1559a9; /* Huruf biru */
+    font-size: 18px; /* Ukuran huruf */
+    font-weight: 700; /* Huruf tebal */
+    cursor: pointer; /* Kursor tangan */
+    box-shadow: 0 5px #c1d7eb; /* Bayangan */
+} /* Menutup aturan answer */
+
+.answer:hover:not(:disabled) { /* Hover jawaban yang masih bisa diklik */
+    border-color: #168cff; /* Bingkai jadi biru */
+    background: #edf8ff; /* Latar biru muda */
+} /* Menutup aturan hover jawaban */
+
+.answer.correct { /* Jawaban benar */
+    background: #d9f9e6; /* Latar hijau muda */
+    border-color: #2bc878; /* Bingkai hijau */
+} /* Menutup aturan jawaban benar */
+
+.answer.wrong { /* Jawaban salah */
+    background: #ffe0e3; /* Latar merah muda */
+    border-color: #ff5965; /* Bingkai merah */
+} /* Menutup aturan jawaban salah */
+
+.trophy { /* Ikon piala */
+    font-size: 80px; /* Ukuran besar */
+} /* Menutup aturan trophy */
+
+.result-card h1 { /* Judul hasil */
+    color: #1265cf; /* Warna biru */
+    font-size: 40px; /* Huruf besar */
+} /* Menutup aturan judul hasil */
+
+.stars { /* Bintang hasil */
+    font-size: 42px; /* Ukuran besar */
+    margin: 15px; /* Jarak sekeliling */
+} /* Menutup aturan stars */
+
+.final-score { /* Kotak skor akhir */
+    background: #f3f8ff; /* Latar biru sangat muda */
+    border: 3px solid #d5e7f8; /* Bingkai */
+    border-radius: 20px; /* Sudut membulat */
+    padding: 15px; /* Ruang dalam */
+    font-weight: 700; /* Huruf tebal */
+} /* Menutup aturan final score */
+
+.final-score strong { /* Angka skor besar */
+    display: block; /* Baris sendiri */
+    color: #1265cf; /* Warna biru */
+    font-size: 55px; /* Sangat besar */
+} /* Menutup aturan angka skor */
+
+#resultMessage { /* Pesan motivasi */
+    margin: 18px 0 8px; /* Jarak atas bawah */
+    color: #4a627c; /* Warna abu kebiruan */
+} /* Menutup aturan pesan hasil */
+
+@media (max-width: 700px) { /* Jika lebar layar 700px atau kurang */
+    .start-card h1 { /* Judul awal di HP */
+        font-size: 42px; /* Diperkecil */
+    } /* Menutup aturan judul HP */
+
+    .levels { /* Grid level di HP */
+        grid-template-columns: 1fr 1fr; /* Jadi 2 kolom */
+        margin-top: 40px; /* Jarak atas dikurangi */
+    } /* Menutup aturan levels HP */
+
+    .answers { /* Jawaban di HP */
+        grid-template-columns: 1fr; /* Satu kolom */
+    } /* Menutup aturan answers HP */
+
+    .welcome-card { /* Kartu welcome di HP */
+        padding: 15px; /* Padding lebih kecil */
+    } /* Menutup aturan welcome HP */
+
+    .character { /* Karakter di HP */
+        font-size: 60px; /* Diperkecil */
+    } /* Menutup aturan character HP */
+
+    .castle { /* Kastil di HP */
+        font-size: 90px; /* Diperkecil */
+    } /* Menutup aturan castle HP */
+
+    .brand { /* Nama game di topbar HP */
+        font-size: 16px; /* Diperkecil */
+    } /* Menutup aturan brand HP */
+
+    .player { /* Data pemain di HP */
+        font-size: 13px; /* Diperkecil */
+    } /* Menutup aturan player HP */
+
+    .result-card h1 { /* Judul hasil di HP */
+        font-size: 28px; /* Diperkecil */
+    } /* Menutup aturan judul hasil HP */
+} /* Menutup media query HP */
